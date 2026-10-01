@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo instalar Hook Machine en Claude</title>
+<meta name="description" content="Guía paso a paso para instalar gratis Hook Machine, la skill de Claude que escribe los hooks de tus reels y anuncios.">
+<meta property="og:title" content="Cómo instalar Hook Machine en Claude">
+<meta property="og:description" content="La skill de Claude que escribe los hooks de tus reels y anuncios. Guía paso a paso, gratis.">
+<meta property="og:image" content="https://diegodoc1111.github.io/hook-machine/img/og.jpg">
+<meta property="og:url" content="https://diegodoc1111.github.io/hook-machine/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪝</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fondo: #EEE8DB;
+    --tinta: #1F1D1A;
+    --texto: #3A3733;
+    --suave: #6E6A63;
+    --terra: #D9774F;
+    --terra-osc: #B85C37;
+    --rosa: #F6DED5;
+    --carta: #FBF8F2;
+    --linea: #E0D8C8;
+    --term: #1E1C1A;
+    --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font: 17px/1.6 var(--sans);
+  }
+  main { max-width: 700px; margin: 0 auto; padding: 32px 22px 64px; }
+
+  /* Encabezado */
+  .cabeza { display: flex; align-items: flex-end; gap: 18px; margin: 8px 0 18px; }
+  .cabeza img { width: 92px; height: auto; image-rendering: pixelated; flex: none; }
+  .etiqueta {
+    display: inline-block; font: 600 13px/1 var(--mono); letter-spacing: .08em;
+    color: var(--terra-osc); background: var(--rosa); padding: 8px 12px; border-radius: 999px;
+  }
+  h1 {
+    font: 400 clamp(42px, 9vw, 64px)/1.02 var(--serif);
+    color: var(--tinta); margin: 14px 0 14px; letter-spacing: -.01em;
+  }
+  h1 em, h2 em { color: var(--terra); }
+  .bajada { font-size: 19px; color: var(--texto); margin: 0 0 22px; }
+  .bajada strong { color: var(--tinta); }
+
+  .avisos { display: grid; gap: 10px; margin: 0 0 34px; padding: 0; list-style: none; }
+  .avisos li {
+    background: var(--carta); border: 1px solid var(--linea); border-radius: 14px;
+    padding: 12px 16px; font-size: 15.5px;
+  }
+  .avisos li b { color: var(--tinta); }
+
+  /* Pasos */
+  .paso { position: relative; margin: 0 0 30px; padding: 22px 20px 20px; background: var(--carta);
+          border: 1px solid var(--linea); border-radius: 20px; }
+  .num {
+    position: absolute; top: -16px; left: 18px; width: 36px; height: 36px; border-radius: 50%;
+    background: var(--terra); color: #fff; font: 700 17px/36px var(--sans); text-align: center;
+    box-shadow: 0 2px 0 var(--terra-osc);
+  }
+  h2 { font: 400 30px/1.15 var(--serif); color: var(--tinta); margin: 8px 0 10px; }
+  .paso p { margin: 0 0 12px; }
+  .paso p:last-child { margin-bottom: 0; }
+  .ruta { font-weight: 700; color: var(--tinta); }
+  .ruta .f { color: var(--terra); font-weight: 400; padding: 0 2px; }
+  a { color: var(--terra-osc); text-underline-offset: 3px; }
+
+  .boton {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin: 14px 0 12px; padding: 16px 20px; border-radius: 999px;
+    background: var(--terra); color: #fff; text-decoration: none;
+    font: 700 18px/1.2 var(--sans); box-shadow: 0 3px 0 var(--terra-osc);
+  }
+  .boton:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--terra-osc); }
+  .nota { font-size: 14.5px; color: var(--suave); }
+
+  figure { margin: 14px 0 0; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 12px;
+               box-shadow: 0 6px 20px rgba(60, 40, 30, .16); }
+  figcaption { font-size: 13.5px; color: var(--suave); margin-top: 8px; }
+
+  /* Terminal */
+  .term { background: var(--term); border-radius: 14px; overflow: hidden; margin: 12px 0 0;
+          box-shadow: 0 6px 20px rgba(30, 20, 15, .22); }
+  .term .barra { display: flex; align-items: center; gap: 7px; padding: 10px 14px;
+                 background: #2A2724; font: 12.5px var(--mono); color: #9E978C; }
+  .term .barra i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  .term .barra span { margin-left: 8px; }
+  .term pre { margin: 0; padding: 14px 16px 16px; overflow-x: auto; font: 14px/1.7 var(--mono);
+              color: #E8E2D6; white-space: pre-wrap; word-break: break-word; }
+  .term .p { color: var(--terra); }
+  .term .g { color: #9E978C; }
+  .term .o { color: #F08A5D; }
+
+  .copiar { margin-top: 10px; display: inline-flex; gap: 8px; align-items: center; cursor: pointer;
+            border: 1px solid var(--linea); background: #fff; color: var(--tinta); border-radius: 999px;
+            padding: 8px 14px; font: 600 14px var(--sans); }
+
+  /* Secciones finales */
+  .seccion { margin: 44px 0 0; }
+  .seccion h2 { font-size: 32px; }
+  details { background: var(--carta); border: 1px solid var(--linea); border-radius: 14px;
+            padding: 14px 16px; margin: 10px 0; }
+  summary { cursor: pointer; font-weight: 700; color: var(--tinta); }
+  details p { margin: 10px 0 0; }
+
+  footer { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--linea);
+           font-size: 15px; color: var(--suave); }
+  footer a { color: var(--tinta); font-weight: 700; text-decoration: none; }
+  footer em { font-family: var(--serif); font-size: 19px; color: var(--terra); }
+</style>
+</head>
+<body>
+<main>
+
+  <div class="cabeza">
+    <img src="img/mascota-regalo.png" alt="">
+    <span class="etiqueta">GRATIS · 3 MINUTOS</span>
+  </div>
+
+  <h1>Cómo instalar <em>Hook Machine</em> en Claude</h1>
+  <p class="bajada">La skill que escribe los títulos de tus reels y anuncios <strong>con fórmulas que ya funcionaron</strong>. Le das un tema y te devuelve 3 hooks listos para grabar.</p>
+
+  <ul class="avisos">
+    <li>💻 <b>Hazlo desde el computador</b>, en <a href="https://claude.ai">claude.ai</a> o en la app de escritorio de Claude.</li>
+    <li>✅ <b>Funciona con cualquier plan de Claude</b>, incluso el gratis.</li>
+  </ul>
+
+  <section class="paso">
+    <div class="num">1</div>
+    <h2>Descarga la skill</h2>
+    <a class="boton" href="https://github.com/diegodoc1111/hook-machine/releases/latest/download/hook-machine.zip">⬇ Descargar la skill</a>
+    <p class="nota">Se baja un archivo llamado <b>hook-machine.zip</b>. <b>No lo descomprimas:</b> Claude lo necesita así.</p>
+  </section>
+
+  <section class="paso">
+    <div class="num">2</div>
+    <h2>Activa la ejecución de código</h2>
+    <p>Se hace una sola vez. Entra a <a href="https://claude.ai/settings/capabilities">Configuración</a> y busca:</p>
+    <p class="ruta">Configuración <span class="f">→</span> Capacidades <span class="f">→</span> Ejecución de código en la nube y creación de archivos</p>
+    <p>Déjalo <b>encendido</b>. Claude dice ahí mismo que es necesario para las habilidades.</p>
+    <figure>
+      <a href="img/requisito-ejecucion-codigo.jpg" target="_blank" rel="noopener"><img src="img/requisito-ejecucion-codigo.jpg" alt="Interruptor de Ejecución de código en la nube y creación de archivos, encendido" loading="lazy"></a>
+      <figcaption>Toca la imagen para verla en grande.</figcaption>
+    </figure>
+  </section>
+
+  <section class="paso">
+    <div class="num">3</div>
+    <h2>Súbela a Claude</h2>
+    <p>Entra a <a href="https://claude.ai/customize/skills">Personalización → Skills</a>. Toca <b>+ Añadir</b> y después <b>Subir habilidad</b>.</p>
+    <figure>
+      <a href="img/paso-subir-1-menu.jpg" target="_blank" rel="noopener"><img src="img/paso-subir-1-menu.jpg" alt="Menú Añadir con la opción Subir habilidad" loading="lazy"></a>
+      <figcaption>Toca la imagen para verla en grande.</figcaption>
+    </figure>
+    <p style="margin-top:18px">Arrastra el archivo <b>hook-machine.zip</b> al recuadro (o haz clic ahí para buscarlo) y toca <b>Subir</b>. Claude le pasa un análisis de seguridad y la deja instalada.</p>
+    <figure>
+      <a href="img/paso-subir-2-cargar.jpg" target="_blank" rel="noopener"><img src="img/paso-subir-2-cargar.jpg" alt="Pantalla Cargar una habilidad con el recuadro para el archivo y el botón Subir" loading="lazy"></a>
+      <figcaption>Toca la imagen para verla en grande.</figcaption>
+    </figure>
+  </section>
+
+  <section class="paso">
+    <div class="num">4</div>
+    <h2>Pídele tus <em>hooks</em></h2>
+    <p>Abre un <b>chat nuevo</b> y escribe:</p>
+    <div class="term">
+      <div class="barra"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>tu chat con Claude</span></div>
+      <pre id="pedido"><span class="p">❯</span> hooks para mi próximo video: [tu tema]</pre>
+    </div>
+    <button class="copiar" type="button" data-copiar="hooks para mi próximo video: ">📋 Copiar la frase</button>
+    <p style="margin-top:18px">Te devuelve algo así:</p>
+    <div class="term">
+      <div class="barra"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>hook-machine</span></div>
+<pre><span class="g">3 opciones, con formato ganador:</span>
+
+<span class="g">01 · Promesa numerada →</span> <span class="o">3 agentes que venden mientras duermes</span>
+<span class="g">02 · Kicker →</span> <span class="o">Nadie te lo dijo: tu CRM ya puede contestar solo</span>
+<span class="g">03 · A vs B →</span> <span class="o">Vender antes de Claude / después de Claude</span></pre>
+    </div>
+    <p style="margin-top:14px">Cada opción trae también <b>lo que dices a cámara</b> en los primeros segundos, y al final te dice cuál probaría primero y por qué.</p>
+    <p class="nota">💡 <b>Para que escriba con tu voz:</b> pégale el texto de 3 a 5 de tus publicaciones (captions o guiones) y después pídele los hooks.</p>
+  </section>
+
+  <section class="seccion">
+    <h2>¿Usas <em>Claude Code</em>?</h2>
+    <p>Pega esto en Claude Code y él la instala solo:</p>
+    <div class="term">
+      <div class="barra"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>Claude Code</span></div>
+      <pre>Instala esta skill de Claude Code: clónala desde https://github.com/diegodoc1111/hook-machine dentro de ~/.claude/skills/</pre>
+    </div>
+    <button class="copiar" type="button" data-copiar="Instala esta skill de Claude Code: clónala desde https://github.com/diegodoc1111/hook-machine dentro de ~/.claude/skills/">📋 Copiar</button>
+  </section>
+
+  <section class="seccion">
+    <h2>Si algo no <em>funciona</em></h2>
+    <details>
+      <summary>No me aparece “Subir habilidad”</summary>
+      <p>Revisa el paso 2: la ejecución de código tiene que estar encendida. Y hazlo desde el computador.</p>
+    </details>
+    <details>
+      <summary>Claude dice que el archivo no sirve</summary>
+      <p>Sube el <b>.zip tal cual lo descargaste</b>. Si lo descomprimiste y lo volviste a comprimir, bájalo otra vez desde el botón del paso 1.</p>
+    </details>
+    <details>
+      <summary>Claude no está usando la skill</summary>
+      <p>Abre un <b>chat nuevo</b> después de instalarla y usa la palabra “hooks” o “ganchos” en lo que le pides.</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>Hecha por <a href="https://instagram.com/soydiegoosorio">@soydiegoosorio</a>. La voy mejorando con los anuncios y contenidos que pruebo y funcionan en mis clientes; la versión más nueva siempre está en el botón del paso 1.</p>
+    <p><em>Úsala, pruébala y compártela.</em></p>
+  </footer>
+
+</main>
+<script>
+  document.querySelectorAll(".copiar").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.getAttribute("data-copiar");
+      var listo = function () { var o = b.textContent; b.textContent = "✅ Copiado"; setTimeout(function () { b.textContent = o; }, 1600); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(t).then(listo, function () {}); }
+    });
+  });
+</script>
+</body>
+</html>

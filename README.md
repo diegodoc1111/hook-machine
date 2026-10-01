@@ -14,13 +14,15 @@ Hecha por [Diego Osorio](https://instagram.com/soydiegoosorio).
 
 ## Instalar en Claude (web o app de escritorio)
 
-1. Descarga [**hook-machine.zip**](https://github.com/diegodoc1111/hook-machine/releases/latest/download/hook-machine.zip). No lo descomprimas.
-2. Entra a [claude.ai/customize/skills](https://claude.ai/customize/skills).
-3. Toca **+**, luego **Create skill** y luego **Upload a skill**. Sube el ZIP.
-4. Activa la skill.
+**[Guía paso a paso con imágenes →](https://diegodoc1111.github.io/hook-machine/)**
 
-Funciona en cualquier plan de Claude, incluso el gratis. Si no te aparece la opción de
-subir skills, activa primero la ejecución de código en la configuración de Claude.
+1. Descarga [**hook-machine.zip**](https://github.com/diegodoc1111/hook-machine/releases/latest/download/hook-machine.zip). No lo descomprimas.
+2. Una sola vez: en **Configuración → Capacidades**, deja encendido
+   **Ejecución de código en la nube y creación de archivos** (es necesario para las habilidades).
+3. Entra a [**Personalización → Skills**](https://claude.ai/customize/skills), toca **+ Añadir** y
+   luego **Subir habilidad**. Arrastra el ZIP al recuadro y toca **Subir**.
+
+Hazlo desde el computador. Funciona en cualquier plan de Claude, incluso el gratis.
 
 ## Instalar en Claude Code
 
