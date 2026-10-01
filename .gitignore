@@ -1,0 +1,6 @@
+# El ZIP se publica como release, no va dentro del repo
+*.zip
+
+# Sistema
+.DS_Store
+Thumbs.db
